@@ -322,22 +322,27 @@ class SuperAmmo implements IPostAkiLoadMod, IPostDBLoadMod, IPreAkiLoadMod
     {
         const logger = container.resolve<ILogger>("WinstonLogger");
         const db = container.resolve<DatabaseServer>("DatabaseServer").getTables();
-        const magazineID = db.templates.items[magazine];
-        if (magazineID._props.Cartridges != undefined)
+        logger.logWithColor(magazine, LogTextColor.green);
+        if (db.templates.items[magazine] != undefined)
         {
-            if (debug) logger.log("Adding " + ammoToAdd + " to " + db.templates.items[magazine]._name, "cyan")
-            const magazineCarts = magazineID._props.Cartridges;
-            const z_filters = magazineCarts[0]._props.filters[0];
-            const z_Filter = z_filters.Filter;
-            z_Filter.push.apply(z_Filter, [ammoToAdd]);
-            const newFilters = [
-                {
-                    Filter: z_Filter,
-                    ExcludedFilter: []
-                }
-            ];
-            
-            magazineID._props.Cartridges[0]._props.filters = newFilters;
+            const magazineID = db.templates.items[magazine];
+            logger.logWithColor(db.templates.items[magazine]._id, LogTextColor.red)
+            if (magazineID._props.Cartridges?.[0]?._props != undefined)
+            {
+                if (debug) logger.log("Adding " + ammoToAdd + " to " + db.templates.items[magazine]._name, "cyan")
+                const magazineCarts = magazineID._props.Cartridges;
+                const z_filters = magazineCarts[0]._props.filters[0];
+                const z_Filter = z_filters.Filter;
+                z_Filter.push.apply(z_Filter, [ammoToAdd]);
+                const newFilters = [
+                    {
+                        Filter: z_Filter,
+                        ExcludedFilter: []
+                    }
+                ];
+                
+                magazineID._props.Cartridges[0]._props.filters = newFilters;
+            }
         }
         //if (debug) logger.log(newFilters, "red");
     }

@@ -75,12 +75,12 @@ class SuperAmmo {
         //762x39
         this.addToHandbook("super762x39", "5b47574386f77428ca22b33b", 69);
         this.addToLocale("super762x39", "Super 762x39", "S. 762x39", "Point. Shoot. Kill.");
-        this.cloneNewAmmo("5a6086ea4f39f99cd479502f", "super762x39");
+        this.cloneNewAmmo("59e0d99486f7744a32234762", "super762x39");
         this.addToChambersMags("Caliber762x39", "super762x39");
         //762x51
         this.addToHandbook("super762x51", "5b47574386f77428ca22b33b", 69);
         this.addToLocale("super762x51", "Super 762x51", "S. 762x51", "Point. Shoot. Kill.");
-        this.cloneNewAmmo("59e0d99486f7744a32234762", "super762x51");
+        this.cloneNewAmmo("5a6086ea4f39f99cd479502f", "super762x51");
         this.addToChambersMags("Caliber762x51", "super762x51");
         //9x39
         this.addToHandbook("super9x39", "5b47574386f77428ca22b33b", 69);
@@ -302,21 +302,25 @@ class SuperAmmo {
     addToMagazine(magazine, ammoToAdd) {
         const logger = tsyringe_1.container.resolve("WinstonLogger");
         const db = tsyringe_1.container.resolve("DatabaseServer").getTables();
-        const magazineID = db.templates.items[magazine];
-        if (magazineID._props.Cartridges != undefined) {
-            if (debug)
-                logger.log("Adding " + ammoToAdd + " to " + db.templates.items[magazine]._name, "cyan");
-            const magazineCarts = magazineID._props.Cartridges;
-            const z_filters = magazineCarts[0]._props.filters[0];
-            const z_Filter = z_filters.Filter;
-            z_Filter.push.apply(z_Filter, [ammoToAdd]);
-            const newFilters = [
-                {
-                    Filter: z_Filter,
-                    ExcludedFilter: []
-                }
-            ];
-            magazineID._props.Cartridges[0]._props.filters = newFilters;
+        logger.logWithColor(magazine, LogTextColor_1.LogTextColor.green);
+        if (db.templates.items[magazine] != undefined) {
+            const magazineID = db.templates.items[magazine];
+            logger.logWithColor(db.templates.items[magazine]._id, LogTextColor_1.LogTextColor.red);
+            if (magazineID._props.Cartridges?.[0]?._props != undefined) {
+                if (debug)
+                    logger.log("Adding " + ammoToAdd + " to " + db.templates.items[magazine]._name, "cyan");
+                const magazineCarts = magazineID._props.Cartridges;
+                const z_filters = magazineCarts[0]._props.filters[0];
+                const z_Filter = z_filters.Filter;
+                z_Filter.push.apply(z_Filter, [ammoToAdd]);
+                const newFilters = [
+                    {
+                        Filter: z_Filter,
+                        ExcludedFilter: []
+                    }
+                ];
+                magazineID._props.Cartridges[0]._props.filters = newFilters;
+            }
         }
         //if (debug) logger.log(newFilters, "red");
     }
