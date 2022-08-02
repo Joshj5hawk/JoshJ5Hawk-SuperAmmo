@@ -24,5 +24,21 @@
 	"super23x75Price": 69,
 	"super20gPrice": 69,
 	"super46x30Price": 69,
-	"super9x19mmPrice": 69
+	"super9x19mmPrice": 69,
+	"InitialSpeed": 9001,
+	"BallisticCoeficient": 1,
+	"Damage": 9001,
+	"ammoAccr": 0,
+	"ammoRec": 0,
+	"ammoDist": 0,
+	"PenetrationPower": 9001,
+	"MisfireChance": 0,
+	"PenetrationChance": 1,
+	"MalfMisfireChance": 0,
+	"DurabilityBurnModificator": 0,
+	"HeatFactor": 0,
+	"MalfFeedChance": 0,
+	"BackgroundColor": "tracerRed",
+	"MinExplosionDistance": 0.15,
+    "MaxExplosionDistance": 5
 }

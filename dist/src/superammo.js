@@ -154,9 +154,10 @@ class SuperAmmo {
         this.addToChambersMags("Caliber9x21", "super9x21");
         //9x33R
         this.addToHandbook("super9x33R", "5b47574386f77428ca22b33b", 69);
-        this.addToLocale("super9x33R", "Super 9x33R", "S. 9x33R", "Point. Shoot. Kill.");
+        this.addToLocale("super9x33R", "Super .357", "S. .357", "Point. Shoot. Kill.");
         this.cloneNewAmmo("62330b3ed4dc74626d570b95", "super9x33R");
-        this.addToChambersMags("Caliber9x33R", "super9x33R");
+        this.addToRevolverShotty("619f54a1d25cbd424731fb99", "super9x33R");
+        this.addToRevolverShotty("61a4cda622af7f4f6a3ce617", "super9x33R");
         //23x75
         this.addToHandbook("super23x75", "5b47574386f77428ca22b33b", 69);
         this.addToLocale("super23x75", "Super 23x75", "S. 23x75", "Point. Shoot. Kill.");
@@ -167,6 +168,11 @@ class SuperAmmo {
         this.addToLocale("super46x30", "Super 46x30", "S. 46x30", "Point. Shoot. Kill.");
         this.cloneNewAmmo("5ba26812d4351e003201fef1", "super46x30");
         this.addToChambersMags("Caliber46x30", "super46x30");
+        //9x19mm
+        this.addToHandbook("super9x19mm", "5b47574386f77428ca22b33b", 69);
+        this.addToLocale("super9x19mm", "Super 9x19mm", "S. 9x19mm", "Point. Shoot. Kill.");
+        this.cloneNewAmmo("5ba26812d4351e003201fef1", "super9x19mm");
+        this.addToRevolverShotty("624c3074dbbd335e8e6becf3", "super9x19mm");
         //12g
         this.addToHandbook("super12g", "5b47574386f77428ca22b33b", 69);
         this.addToLocale("super12g", "Boom Buckshot", "12g BOOM", "Point. Shoot. EXPLODE.");
@@ -182,6 +188,8 @@ class SuperAmmo {
         this.addToLocale("Caliber30x29", "Super 30x29", "S. 30x29", "Point. Shoot. Kill.");
         this.cloneNewAmmo("59e0d99486f7744a32234762", "Caliber30x29");
         this.addToChambersMags("Caliber30x29", "Caliber30x29");*/
+        this.addToRevolverShotty("60dc519adf4c47305f6d410d", "super12g");
+        this.addAmmoToAllChambers("5580223e4bdc2d1c128b457f", "super12g");
         if (debug)
             console.log("Handbook");
         if (debug)
@@ -260,6 +268,35 @@ class SuperAmmo {
                 "Description": description
             };
     }
+    addToRevolverShotty(itemId, ammoToAdd) {
+        const logger = tsyringe_1.container.resolve("WinstonLogger");
+        const db = tsyringe_1.container.resolve("DatabaseServer").getTables();
+        const weaponID = db.templates.items[itemId];
+        for (const index in weaponID._props.Slots) {
+            logger.log("Adding " + ammoToAdd + " to " + weaponID._name, "cyan");
+            const z_Filter = weaponID._props.Slots[index]._props.filters[0].Filter;
+            z_Filter.push.apply(z_Filter, [ammoToAdd]);
+            const newFilters = [
+                {
+                    Filter: z_Filter,
+                    ExcludedFilter: []
+                }
+            ];
+            weaponID._props.Slots[index]._props.filters = newFilters;
+        }
+        for (const index in weaponID._props.Cartridges) {
+            logger.log("Adding " + ammoToAdd + " to " + weaponID._name, "cyan");
+            const z_Filter = weaponID._props.Cartridges[index]._props.filters[0].Filter;
+            z_Filter.push.apply(z_Filter, [ammoToAdd]);
+            const newFilters = [
+                {
+                    Filter: z_Filter,
+                    ExcludedFilter: []
+                }
+            ];
+            weaponID._props.Cartridges[index]._props.filters = newFilters;
+        }
+    }
     addAmmoToAllMags(caliber, ammo) {
         const db = tsyringe_1.container.resolve("DatabaseServer").getTables();
         for (const item in db.templates.items) {
@@ -283,35 +320,10 @@ class SuperAmmo {
         const db = tsyringe_1.container.resolve("DatabaseServer").getTables();
         const weaponID = db.templates.items[weapon];
         if (weaponID._props.Chambers?.[0]?._props != undefined) {
-            if (debug)
-                logger.log("Adding " + ammoToAdd + " to " + db.templates.items[weapon]._name, "cyan");
-            const weaponChamber = weaponID._props.Chambers;
-            const z_filters = weaponChamber[0]._props.filters[0];
-            const z_Filter = z_filters.Filter;
-            z_Filter.push.apply(z_Filter, [ammoToAdd]);
-            const newFilters = [
-                {
-                    Filter: z_Filter,
-                    ExcludedFilter: []
-                }
-            ];
-            weaponID._props.Chambers[0]._props.filters = newFilters;
-        }
-        //if (debug) logger.log(newFilters, "cyan");
-    }
-    addToMagazine(magazine, ammoToAdd) {
-        const logger = tsyringe_1.container.resolve("WinstonLogger");
-        const db = tsyringe_1.container.resolve("DatabaseServer").getTables();
-        logger.logWithColor(magazine, LogTextColor_1.LogTextColor.green);
-        if (db.templates.items[magazine] != undefined) {
-            const magazineID = db.templates.items[magazine];
-            logger.logWithColor(db.templates.items[magazine]._id, LogTextColor_1.LogTextColor.red);
-            if (magazineID._props.Cartridges?.[0]?._props != undefined) {
+            for (const index in weaponID._props.Chambers) {
                 if (debug)
-                    logger.log("Adding " + ammoToAdd + " to " + db.templates.items[magazine]._name, "cyan");
-                const magazineCarts = magazineID._props.Cartridges;
-                const z_filters = magazineCarts[0]._props.filters[0];
-                const z_Filter = z_filters.Filter;
+                    logger.log("Adding " + ammoToAdd + " to " + db.templates.items[weapon]._name, "cyan");
+                const z_Filter = weaponID._props.Chambers[index]._props.filters[0].Filter;
                 z_Filter.push.apply(z_Filter, [ammoToAdd]);
                 const newFilters = [
                     {
@@ -319,16 +331,71 @@ class SuperAmmo {
                         ExcludedFilter: []
                     }
                 ];
+                weaponID._props.Chambers[0]._props.filters = newFilters;
+            }
+        }
+        //if (debug) logger.log(newFilters, "cyan");
+    }
+    addToMagazine(magazine, ammoToAdd) {
+        const logger = tsyringe_1.container.resolve("WinstonLogger");
+        const db = tsyringe_1.container.resolve("DatabaseServer").getTables();
+        //logger.logWithColor(magazine, LogTextColor.green);
+        if (db.templates.items[magazine] != undefined) {
+            const magazineID = db.templates.items[magazine];
+            //logger.logWithColor(db.templates.items[magazine]._id, LogTextColor.red)
+            if (magazineID._props.Cartridges?.[0]?._props != undefined) {
+                if (debug)
+                    logger.log("Adding " + ammoToAdd + " to " + db.templates.items[magazine]._name, "cyan");
+                const z_Filter = magazineID._props.Cartridges[0]._props.filters[0].Filter;
+                z_Filter.push.apply(z_Filter, [ammoToAdd]);
+                const newFilters = [
+                    {
+                        Filter: z_Filter,
+                        ExcludedFilter: []
+                    }
+                ];
+                logger.logWithColor(magazineID._name, LogTextColor_1.LogTextColor.green);
+                logger.logWithColor(ammoToAdd, LogTextColor_1.LogTextColor.yellow);
                 magazineID._props.Cartridges[0]._props.filters = newFilters;
             }
         }
         //if (debug) logger.log(newFilters, "red");
+    }
+    addToSlot(id, ammoToAdd) {
+        const logger = tsyringe_1.container.resolve("WinstonLogger");
+        const db = tsyringe_1.container.resolve("DatabaseServer").getTables();
+        const weaponOrMagID = db.templates.items[id];
+        if (weaponOrMagID._props.Slots != undefined && weaponOrMagID._id != "60db29ce99594040e04c4a27" && weaponOrMagID._id != "624c2e8614da335f1e034d8c" && weaponOrMagID._id != "61a4c8884f95bc3b2c5dc96f") {
+            if (weaponOrMagID._props.Slots?.[0]?._props != undefined) {
+                for (const index in weaponOrMagID._props.Slots) {
+                    if (debug)
+                        logger.log("Adding " + ammoToAdd + " to " + db.templates.items.weaponOrMagID._name, "cyan");
+                    const z_Filter = weaponOrMagID._props.Slots[index]._props.filters[0].Filter;
+                    z_Filter.push.apply(z_Filter, [ammoToAdd]);
+                    const newFilters = [
+                        {
+                            Filter: z_Filter,
+                            ExcludedFilter: []
+                        }
+                    ];
+                    weaponOrMagID._props.Slots[index]._props.filters = newFilters;
+                }
+            }
+        }
     }
     addAmmoToAllChambers(caliber, ammo) {
         const db = tsyringe_1.container.resolve("DatabaseServer").getTables();
         for (const item in db.templates.items) {
             if (db.templates.items[item]._props.Chambers != undefined && db.templates.items[item]._props.ammoCaliber == caliber) {
                 this.addToWeaponChamber(db.templates.items[item]._id, ammo);
+            }
+        }
+    }
+    addAmmoToAllSlots(caliber, ammo) {
+        const db = tsyringe_1.container.resolve("DatabaseServer").getTables();
+        for (const item in db.templates.items) {
+            if (db.templates.items[item]._props.Slots != undefined && db.templates.items[item]._props.ammoCaliber == caliber) {
+                this.addToSlot(db.templates.items[item]._id, ammo);
             }
         }
     }
@@ -432,6 +499,7 @@ class SuperAmmo {
         ammoID._props.HeatFactor = 0;
         ammoID._props.MalfFeedChance = 0;
         ammoID._props.buckshotBullets = this.modConfig.buckshotBulletsCount;
+        ammoID._props.ProjectileCount = this.modConfig.buckshotBulletsCount;
         ammoID._props.HasGrenaderComponent = true;
         ammoID._props.ShowHitEffectOnExplode = true;
         ammoID._props.FragmentsCount = this.modConfig.fragmentCount;
@@ -958,6 +1026,27 @@ class SuperAmmo {
             ]
         ];
         assortTable.loyal_level_items["super46x30"] = 1;
+        //super9x19mm
+        const newsuper9x19mm = {
+            _id: "super9x19mm",
+            _tpl: "super9x19mm",
+            parentId: "hideout",
+            slotId: "hideout",
+            upd: {
+                UnlimitedCount: true,
+                StackObjectsCount: 999999999
+            }
+        };
+        assortTable.items.push(newsuper9x19mm);
+        assortTable.barter_scheme["super9x19mm"] = [
+            [
+                {
+                    count: this.modConfig.super9x19mmPrice,
+                    _tpl: ROUBLE_ID
+                }
+            ]
+        ];
+        assortTable.loyal_level_items["super9x19mm"] = 1;
         return assortTable;
     }
 }
