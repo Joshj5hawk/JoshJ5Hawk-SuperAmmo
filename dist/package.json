@@ -1,6 +1,6 @@
 {
     "name": "SuperAmmo",
-    "version": "2.0.3",
+    "version": "2.0.4",
     "main": "src/superammo.js",
     "license": "MIT",
     "author": "JoshJ5Hawk",
