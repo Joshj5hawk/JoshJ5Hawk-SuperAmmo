@@ -126,6 +126,7 @@ class SuperAmmo implements IPostAkiLoadMod, IPostDBLoadMod, IPreAkiLoadMod
         this.addToLocale("super40x46", "Super 40x46", "S. 40x46", "Point. Shoot. Kill.");
         this.cloneNewAmmo("5ede474b0c226a66f5402622", "super40x46");
         this.addToChambersMags("Caliber40x46", "super40x46");
+        this.addToRevolvingWeopons("627bce33f21bc425b06ab967", "super40x46");
         //26x75
         this.addToHandbook("super26x75", "5b47574386f77428ca22b33b", 69);
         this.addToLocale("super26x75", "Super 26x75", "S. 26x75", "Point. Shoot. Kill.");
@@ -146,6 +147,7 @@ class SuperAmmo implements IPostAkiLoadMod, IPostDBLoadMod, IPreAkiLoadMod
         this.addToLocale("super9x19PARA", "Super 9x19PARA", "S. 9x19PARA", "Point. Shoot. Kill.");
         this.cloneNewAmmo("5efb0da7a29a85116f6ea05f", "super9x19PARA");
         this.addToChambersMags("Caliber9x19PARA", "super9x19PARA");
+        this.addToRevolvingWeopons("624c3074dbbd335e8e6becf3", "super9x19PARA");
         //57x28
         this.addToHandbook("super57x28", "5b47574386f77428ca22b33b", 69);
         this.addToLocale("super57x28", "Super 57x28", "S. 57x28", "Point. Shoot. Kill.");
@@ -160,8 +162,8 @@ class SuperAmmo implements IPostAkiLoadMod, IPostDBLoadMod, IPreAkiLoadMod
         this.addToHandbook("super9x33R", "5b47574386f77428ca22b33b", 69);
         this.addToLocale("super9x33R", "Super .357", "S. .357", "Point. Shoot. Kill.");
         this.cloneNewAmmo("62330b3ed4dc74626d570b95", "super9x33R");
-        this.addToRevolverShotty("619f54a1d25cbd424731fb99", "super9x33R");
-        this.addToRevolverShotty("61a4cda622af7f4f6a3ce617", "super9x33R");
+        this.addToRevolvingWeopons("619f54a1d25cbd424731fb99", "super9x33R");
+        this.addToRevolvingWeopons("61a4cda622af7f4f6a3ce617", "super9x33R");
         //23x75
         this.addToHandbook("super23x75", "5b47574386f77428ca22b33b", 69);
         this.addToLocale("super23x75", "Super 23x75", "S. 23x75", "Point. Shoot. Kill.");
@@ -176,7 +178,7 @@ class SuperAmmo implements IPostAkiLoadMod, IPostDBLoadMod, IPreAkiLoadMod
         this.addToHandbook("super9x19mm", "5b47574386f77428ca22b33b", 69);
         this.addToLocale("super9x19mm", "Super 9x19mm", "S. 9x19mm", "Point. Shoot. Kill.");
         this.cloneNewAmmo("5ba26812d4351e003201fef1", "super9x19mm");
-        this.addToRevolverShotty("624c3074dbbd335e8e6becf3", "super9x19mm");
+        this.addToRevolvingWeopons("624c3074dbbd335e8e6becf3", "super9x19mm");
         //12g
         this.addToHandbook("super12g", "5b47574386f77428ca22b33b", 69);
         this.addToLocale("super12g", "Boom Buckshot", "12g BOOM", "Point. Shoot. EXPLODE.");
@@ -194,7 +196,7 @@ class SuperAmmo implements IPostAkiLoadMod, IPostDBLoadMod, IPreAkiLoadMod
         this.addToLocale("Caliber30x29", "Super 30x29", "S. 30x29", "Point. Shoot. Kill.");
         this.cloneNewAmmo("59e0d99486f7744a32234762", "Caliber30x29");
         this.addToChambersMags("Caliber30x29", "Caliber30x29");*/
-        this.addToRevolverShotty("60dc519adf4c47305f6d410d", "super12g");
+        this.addToRevolvingWeopons("60dc519adf4c47305f6d410d", "super12g");
         this.addAmmoToAllChambers("5580223e4bdc2d1c128b457f", "super12g");
 
         if (debug) console.log("Handbook");
@@ -283,7 +285,7 @@ class SuperAmmo implements IPostAkiLoadMod, IPostDBLoadMod, IPreAkiLoadMod
                 "Description": description
             };
     }
-    addToRevolverShotty(itemId: string, ammoToAdd: string) 
+    addToRevolvingWeopons(itemId: string, ammoToAdd: string) 
     {
         const logger = container.resolve<ILogger>("WinstonLogger");
         const db = container.resolve<DatabaseServer>("DatabaseServer").getTables();

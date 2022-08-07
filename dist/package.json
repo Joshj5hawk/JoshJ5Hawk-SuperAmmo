@@ -1,10 +1,10 @@
 {
     "name": "SuperAmmo",
-    "version": "2.0.4",
+    "version": "2.0.5",
     "main": "src/superammo.js",
     "license": "MIT",
     "author": "JoshJ5Hawk",
-    "akiVersion": "3.1.1",
+    "akiVersion": "3.2.0",
     "scripts": {
         "setup:environment": "npm i",
         "build:unzipped": "copyfiles -e \"./node_modules/**/*.*\" -e \"./dist/**/*.*\" -e \"./package-lock.json\" -e \"./tsconfig.json\" -e \"./README.txt\" -e \"./mod.code-workspace\" \"./**/*.*\" ./dist",
