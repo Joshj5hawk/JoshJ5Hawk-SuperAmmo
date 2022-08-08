@@ -7,8 +7,6 @@ export interface ITemplateItem {
     _proto: string;
 }
 export interface Props {
-    FinAllowed: boolean;
-    Finallowed: boolean;
     Name?: string;
     ShortName?: string;
     Description?: string;
