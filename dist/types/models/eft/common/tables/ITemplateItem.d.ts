@@ -7,8 +7,6 @@ export interface ITemplateItem {
     _proto: string;
 }
 export interface Props {
-    FinAllowed: boolean;
-    Finallowed: boolean;
     Name?: string;
     ShortName?: string;
     Description?: string;
@@ -36,6 +34,7 @@ export interface Props {
     LootExperience?: number;
     ExamineExperience?: number;
     HideEntrails?: boolean;
+    InsuranceDisabled?: boolean;
     RepairCost?: number;
     RepairSpeed?: number;
     ExtraSizeLeft?: number;
@@ -208,6 +207,7 @@ export interface Props {
     IsOneoff?: boolean;
     MustBoltBeOpennedForExternalReload?: boolean;
     MustBoltBeOpennedForInternalReload?: boolean;
+    NoFiremodeOnBoltcatch?: boolean;
     BoltAction?: boolean;
     HipAccuracyRestorationDelay?: number;
     HipAccuracyRestorationSpeed?: number;

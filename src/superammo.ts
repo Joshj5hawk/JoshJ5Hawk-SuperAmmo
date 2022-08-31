@@ -36,8 +36,6 @@ class SuperAmmo implements IPostAkiLoadMod, IPostDBLoadMod, IPreAkiLoadMod
         this.registerProfileImage(container);
 
         this.setupTraderUpdateTime(container);
-
-        logger.logWithColor("Loading: Super Ammo", LogTextColor.cyan);
     }
 
     public postDBLoad(container: DependencyContainer): void 
@@ -589,7 +587,7 @@ class SuperAmmo implements IPostAkiLoadMod, IPostDBLoadMod, IPreAkiLoadMod
         const weaponID = db.templates.items[itemId];
         for (const index in weaponID._props.Slots)
         {
-            logger.log("Adding " + ammoToAdd + " to " + weaponID._name, "cyan")
+            if (debug) logger.logWithColor("Adding " + ammoToAdd + " to " + weaponID._name, LogTextColor.CYAN)
             const z_Filter = weaponID._props.Slots[index]._props.filters[0].Filter;
             z_Filter.push.apply(z_Filter, [ammoToAdd]);
             const newFilters = [
@@ -602,7 +600,7 @@ class SuperAmmo implements IPostAkiLoadMod, IPostDBLoadMod, IPreAkiLoadMod
         }
         for (const index in weaponID._props.Cartridges)
         {
-            logger.log("Adding " + ammoToAdd + " to " + weaponID._name, "cyan")
+            if (debug) logger.logWithColor("Adding " + ammoToAdd + " to " + weaponID._name, LogTextColor.CYAN)
             const z_Filter = weaponID._props.Cartridges[index]._props.filters[0].Filter;
             z_Filter.push.apply(z_Filter, [ammoToAdd]);
             const newFilters = [
@@ -683,8 +681,8 @@ class SuperAmmo implements IPostAkiLoadMod, IPostDBLoadMod, IPreAkiLoadMod
                         ExcludedFilter: []
                     }
                 ];
-                logger.logWithColor(magazineID._name, LogTextColor.green);
-                logger.logWithColor(ammoToAdd, LogTextColor.yellow)
+                if (debug) logger.logWithColor(magazineID._name, LogTextColor.GREEN);
+                if (debug) logger.logWithColor(ammoToAdd, LogTextColor.YELLOW)
                 magazineID._props.Cartridges[0]._props.filters = newFilters;
             }
             
@@ -763,8 +761,8 @@ class SuperAmmo implements IPostAkiLoadMod, IPostDBLoadMod, IPreAkiLoadMod
                 
             }
         }
-        logger.logWithColor("Weapon Slot Names", LogTextColor.cyan);
-        logger.logWithColor(newArray, LogTextColor.red);
+        if (debug) logger.logWithColor("Weapon Slot Names", LogTextColor.CYAN);
+        if (debug)logger.logWithColor(newArray, LogTextColor.RED);
     }
     private showCaliber()
     {
@@ -788,8 +786,8 @@ class SuperAmmo implements IPostAkiLoadMod, IPostDBLoadMod, IPreAkiLoadMod
                 }
             }
         }
-        if (debug) logger.logWithColor("Ammo Calibers", LogTextColor.green);
-        if (debug) logger.logWithColor(testArray, LogTextColor.red);
+        if (debug) logger.logWithColor("Ammo Calibers", LogTextColor.GREEN);
+        if (debug) logger.logWithColor(testArray, LogTextColor.RED);
     }
     private addToStaticLoot(containerID:string, itemToAdd:string, probablity:number)
     {
@@ -835,7 +833,7 @@ class SuperAmmo implements IPostAkiLoadMod, IPostDBLoadMod, IPreAkiLoadMod
         ammoID._props.BackgroundColor = this.modConfig.BackgroundColor;
         ammoID._props.Finallowed = false;
         ammoID._props.FinAllowed = false;
-        logger.logWithColor("Ammo " + ammoID._id + " Added", LogTextColor.green);
+        if (debug) logger.logWithColor("Ammo " + ammoID._id + " Added", LogTextColor.GREEN);
         
     }
     private cloneBoomAmmo(ammoToClone:string, newAmmoID:string)
@@ -864,13 +862,13 @@ class SuperAmmo implements IPostAkiLoadMod, IPostDBLoadMod, IPreAkiLoadMod
         ammoID._props.ShowHitEffectOnExplode = true;
         ammoID._props.FragmentsCount = this.modConfig.fragmentCount;
         ammoID._props.FragmentType = "myshrap";
-        ammoID._props.ExplosionType = "big_round_impact_explosive";
+        ammoID._props.ExplosionType = "smallgrenade_expl";
         ammoID._props.MinExplosionDistance = this.modConfig.MinExplosionDistance;
         ammoID._props.MaxExplosionDistance = this.modConfig.MaxExplosionDistance;
         ammoID._props.BackgroundColor = "tracerRed"
         ammoID._props.Finallowed = false;
         ammoID._props.FinAllowed = false;
-        logger.logWithColor("BoomAmmo " + ammoID._id + " Added", LogTextColor.green);
+        if (debug) logger.logWithColor("BoomAmmo " + ammoID._id + " Added", LogTextColor.GREEN);
     }
     private cloneItem(itemtoClone:string, newitemID:string)
     {
@@ -882,7 +880,7 @@ class SuperAmmo implements IPostAkiLoadMod, IPostDBLoadMod, IPreAkiLoadMod
         db.templates.items[itemToAdd] = JsonUtil.clone(db.templates.items[itemtoClone])
         db.templates.items[itemToAdd]._id = itemToAdd;
         
-        if (debug) logger.logWithColor(db.templates.items[itemtoClone]._name + " cloned", LogTextColor.green);
+        if (debug) logger.logWithColor(db.templates.items[itemtoClone]._name + " cloned", LogTextColor.GREEN);
     }
     private registerProfileImage(container: DependencyContainer): void 
     {

@@ -39,7 +39,6 @@ class SuperAmmo {
         const logger = container.resolve("WinstonLogger");
         this.registerProfileImage(container);
         this.setupTraderUpdateTime(container);
-        logger.logWithColor("Loading: Super Ammo", LogTextColor_1.LogTextColor.cyan);
     }
     postDBLoad(container) {
         const db = container.resolve("DatabaseServer").getTables();
@@ -122,6 +121,7 @@ class SuperAmmo {
         this.addToLocale("super40x46", "Super 40x46", "S. 40x46", "Point. Shoot. Kill.");
         this.cloneNewAmmo("5ede474b0c226a66f5402622", "super40x46");
         this.addToChambersMags("Caliber40x46", "super40x46");
+        this.addToRevolvingWeopons("627bce33f21bc425b06ab967", "super40x46");
         //26x75
         this.addToHandbook("super26x75", "5b47574386f77428ca22b33b", 69);
         this.addToLocale("super26x75", "Super 26x75", "S. 26x75", "Point. Shoot. Kill.");
@@ -142,6 +142,7 @@ class SuperAmmo {
         this.addToLocale("super9x19PARA", "Super 9x19PARA", "S. 9x19PARA", "Point. Shoot. Kill.");
         this.cloneNewAmmo("5efb0da7a29a85116f6ea05f", "super9x19PARA");
         this.addToChambersMags("Caliber9x19PARA", "super9x19PARA");
+        this.addToRevolvingWeopons("624c3074dbbd335e8e6becf3", "super9x19PARA");
         //57x28
         this.addToHandbook("super57x28", "5b47574386f77428ca22b33b", 69);
         this.addToLocale("super57x28", "Super 57x28", "S. 57x28", "Point. Shoot. Kill.");
@@ -156,8 +157,8 @@ class SuperAmmo {
         this.addToHandbook("super9x33R", "5b47574386f77428ca22b33b", 69);
         this.addToLocale("super9x33R", "Super .357", "S. .357", "Point. Shoot. Kill.");
         this.cloneNewAmmo("62330b3ed4dc74626d570b95", "super9x33R");
-        this.addToRevolverShotty("619f54a1d25cbd424731fb99", "super9x33R");
-        this.addToRevolverShotty("61a4cda622af7f4f6a3ce617", "super9x33R");
+        this.addToRevolvingWeopons("619f54a1d25cbd424731fb99", "super9x33R");
+        this.addToRevolvingWeopons("61a4cda622af7f4f6a3ce617", "super9x33R");
         //23x75
         this.addToHandbook("super23x75", "5b47574386f77428ca22b33b", 69);
         this.addToLocale("super23x75", "Super 23x75", "S. 23x75", "Point. Shoot. Kill.");
@@ -172,7 +173,7 @@ class SuperAmmo {
         this.addToHandbook("super9x19mm", "5b47574386f77428ca22b33b", 69);
         this.addToLocale("super9x19mm", "Super 9x19mm", "S. 9x19mm", "Point. Shoot. Kill.");
         this.cloneNewAmmo("5ba26812d4351e003201fef1", "super9x19mm");
-        this.addToRevolverShotty("624c3074dbbd335e8e6becf3", "super9x19mm");
+        this.addToRevolvingWeopons("624c3074dbbd335e8e6becf3", "super9x19mm");
         //12g
         this.addToHandbook("super12g", "5b47574386f77428ca22b33b", 69);
         this.addToLocale("super12g", "Boom Buckshot", "12g BOOM", "Point. Shoot. EXPLODE.");
@@ -188,7 +189,7 @@ class SuperAmmo {
         this.addToLocale("Caliber30x29", "Super 30x29", "S. 30x29", "Point. Shoot. Kill.");
         this.cloneNewAmmo("59e0d99486f7744a32234762", "Caliber30x29");
         this.addToChambersMags("Caliber30x29", "Caliber30x29");*/
-        this.addToRevolverShotty("60dc519adf4c47305f6d410d", "super12g");
+        this.addToRevolvingWeopons("60dc519adf4c47305f6d410d", "super12g");
         this.addAmmoToAllChambers("5580223e4bdc2d1c128b457f", "super12g");
         if (debug)
             console.log("Handbook");
@@ -202,7 +203,7 @@ class SuperAmmo {
         this.cloneItem("5996f6cb86f774678763a6ca", "myshrap");
         const myShrap = db.templates.items["myshrap"]._props;
         myShrap.Damage = 9001;
-        //Wooden ammo box
+        //Wooden ammo box 5909d45286f77465a8136dc6
         this.addToStaticLoot("5909d45286f77465a8136dc6", "super762x39", 250);
         this.addToStaticLoot("5909d45286f77465a8136dc6", "super762x51", 250);
         this.addToStaticLoot("5909d45286f77465a8136dc6", "super9x39", 250);
@@ -223,7 +224,7 @@ class SuperAmmo {
         this.addToStaticLoot("5909d45286f77465a8136dc6", "super23x75", 250);
         this.addToStaticLoot("5909d45286f77465a8136dc6", "super20g", 250);
         this.addToStaticLoot("5909d45286f77465a8136dc6", "super46x30", 250);
-        //Jacket
+        //Jacket 1 5914944186f774189e5e76c2 
         this.addToStaticLoot("5914944186f774189e5e76c2", "super762x39", 250);
         this.addToStaticLoot("5914944186f774189e5e76c2", "super762x51", 250);
         this.addToStaticLoot("5914944186f774189e5e76c2", "super9x39", 250);
@@ -244,6 +245,303 @@ class SuperAmmo {
         this.addToStaticLoot("5914944186f774189e5e76c2", "super23x75", 250);
         this.addToStaticLoot("5914944186f774189e5e76c2", "super20g", 250);
         this.addToStaticLoot("5914944186f774189e5e76c2", "super46x30", 250);
+        //Jacket 2 578f8778245977358849a9b5    
+        this.addToStaticLoot("578f8778245977358849a9b5", "super762x39", 250);
+        this.addToStaticLoot("578f8778245977358849a9b5", "super762x51", 250);
+        this.addToStaticLoot("578f8778245977358849a9b5", "super9x39", 250);
+        this.addToStaticLoot("578f8778245977358849a9b5", "super545x39", 250);
+        this.addToStaticLoot("578f8778245977358849a9b5", "super556x45NATO", 250);
+        this.addToStaticLoot("578f8778245977358849a9b5", "super127x55", 250);
+        this.addToStaticLoot("578f8778245977358849a9b5", "super762x35", 250);
+        this.addToStaticLoot("578f8778245977358849a9b5", "super9x18PM", 250);
+        this.addToStaticLoot("578f8778245977358849a9b5", "super366TKM", 250);
+        this.addToStaticLoot("578f8778245977358849a9b5", "super40x46", 250);
+        this.addToStaticLoot("578f8778245977358849a9b5", "super26x75", 250);
+        this.addToStaticLoot("578f8778245977358849a9b5", "super762x54R", 250);
+        this.addToStaticLoot("578f8778245977358849a9b5", "super86x70", 250);
+        this.addToStaticLoot("578f8778245977358849a9b5", "super9x19PARA", 250);
+        this.addToStaticLoot("578f8778245977358849a9b5", "super57x28", 250);
+        this.addToStaticLoot("578f8778245977358849a9b5", "super9x21", 250);
+        this.addToStaticLoot("578f8778245977358849a9b5", "super9x33R", 250);
+        this.addToStaticLoot("578f8778245977358849a9b5", "super23x75", 250);
+        this.addToStaticLoot("578f8778245977358849a9b5", "super20g", 250);
+        this.addToStaticLoot("578f8778245977358849a9b5", "super46x30", 250);
+        //Jacket 3 5937ef2b86f77408a47244b3
+        this.addToStaticLoot("5937ef2b86f77408a47244b3", "super762x39", 250);
+        this.addToStaticLoot("5937ef2b86f77408a47244b3", "super762x51", 250);
+        this.addToStaticLoot("5937ef2b86f77408a47244b3", "super9x39", 250);
+        this.addToStaticLoot("5937ef2b86f77408a47244b3", "super545x39", 250);
+        this.addToStaticLoot("5937ef2b86f77408a47244b3", "super556x45NATO", 250);
+        this.addToStaticLoot("5937ef2b86f77408a47244b3", "super127x55", 250);
+        this.addToStaticLoot("5937ef2b86f77408a47244b3", "super762x35", 250);
+        this.addToStaticLoot("5937ef2b86f77408a47244b3", "super9x18PM", 250);
+        this.addToStaticLoot("5937ef2b86f77408a47244b3", "super366TKM", 250);
+        this.addToStaticLoot("5937ef2b86f77408a47244b3", "super40x46", 250);
+        this.addToStaticLoot("5937ef2b86f77408a47244b3", "super26x75", 250);
+        this.addToStaticLoot("5937ef2b86f77408a47244b3", "super762x54R", 250);
+        this.addToStaticLoot("5937ef2b86f77408a47244b3", "super86x70", 250);
+        this.addToStaticLoot("5937ef2b86f77408a47244b3", "super9x19PARA", 250);
+        this.addToStaticLoot("5937ef2b86f77408a47244b3", "super57x28", 250);
+        this.addToStaticLoot("5937ef2b86f77408a47244b3", "super9x21", 250);
+        this.addToStaticLoot("5937ef2b86f77408a47244b3", "super9x33R", 250);
+        this.addToStaticLoot("5937ef2b86f77408a47244b3", "super23x75", 250);
+        this.addToStaticLoot("5937ef2b86f77408a47244b3", "super20g", 250);
+        this.addToStaticLoot("5937ef2b86f77408a47244b3", "super46x30", 250);
+        //Jacket 4 59387ac686f77401442ddd61
+        this.addToStaticLoot("59387ac686f77401442ddd61", "super762x39", 250);
+        this.addToStaticLoot("59387ac686f77401442ddd61", "super762x51", 250);
+        this.addToStaticLoot("59387ac686f77401442ddd61", "super9x39", 250);
+        this.addToStaticLoot("59387ac686f77401442ddd61", "super545x39", 250);
+        this.addToStaticLoot("59387ac686f77401442ddd61", "super556x45NATO", 250);
+        this.addToStaticLoot("59387ac686f77401442ddd61", "super127x55", 250);
+        this.addToStaticLoot("59387ac686f77401442ddd61", "super762x35", 250);
+        this.addToStaticLoot("59387ac686f77401442ddd61", "super9x18PM", 250);
+        this.addToStaticLoot("59387ac686f77401442ddd61", "super366TKM", 250);
+        this.addToStaticLoot("59387ac686f77401442ddd61", "super40x46", 250);
+        this.addToStaticLoot("59387ac686f77401442ddd61", "super26x75", 250);
+        this.addToStaticLoot("59387ac686f77401442ddd61", "super762x54R", 250);
+        this.addToStaticLoot("59387ac686f77401442ddd61", "super86x70", 250);
+        this.addToStaticLoot("59387ac686f77401442ddd61", "super9x19PARA", 250);
+        this.addToStaticLoot("59387ac686f77401442ddd61", "super57x28", 250);
+        this.addToStaticLoot("59387ac686f77401442ddd61", "super9x21", 250);
+        this.addToStaticLoot("59387ac686f77401442ddd61", "super9x33R", 250);
+        this.addToStaticLoot("59387ac686f77401442ddd61", "super23x75", 250);
+        this.addToStaticLoot("59387ac686f77401442ddd61", "super20g", 250);
+        this.addToStaticLoot("59387ac686f77401442ddd61", "super46x30", 250);
+        //Safe 578f8782245977354405a1e3
+        //Cash Register 578f879c24597735401e6bc6
+        //Wooden Crate 578f87ad245977356274f2cc
+        this.addToStaticLoot("578f87ad245977356274f2cc", "super762x51", 250);
+        this.addToStaticLoot("578f87ad245977356274f2cc", "super9x39", 250);
+        this.addToStaticLoot("578f87ad245977356274f2cc", "super545x39", 250);
+        this.addToStaticLoot("578f87ad245977356274f2cc", "super556x45NATO", 250);
+        this.addToStaticLoot("578f87ad245977356274f2cc", "super127x55", 250);
+        this.addToStaticLoot("578f87ad245977356274f2cc", "super762x35", 250);
+        this.addToStaticLoot("578f87ad245977356274f2cc", "super9x18PM", 250);
+        this.addToStaticLoot("578f87ad245977356274f2cc", "super366TKM", 250);
+        this.addToStaticLoot("578f87ad245977356274f2cc", "super40x46", 250);
+        this.addToStaticLoot("578f87ad245977356274f2cc", "super26x75", 250);
+        this.addToStaticLoot("578f87ad245977356274f2cc", "super762x54R", 250);
+        this.addToStaticLoot("578f87ad245977356274f2cc", "super86x70", 250);
+        this.addToStaticLoot("578f87ad245977356274f2cc", "super9x19PARA", 250);
+        this.addToStaticLoot("578f87ad245977356274f2cc", "super57x28", 250);
+        this.addToStaticLoot("578f87ad245977356274f2cc", "super9x21", 250);
+        this.addToStaticLoot("578f87ad245977356274f2cc", "super9x33R", 250);
+        this.addToStaticLoot("578f87ad245977356274f2cc", "super23x75", 250);
+        this.addToStaticLoot("578f87ad245977356274f2cc", "super20g", 250);
+        this.addToStaticLoot("578f87ad245977356274f2cc", "super46x30", 250);
+        //Drawer 578f87b7245977356274f2cd
+        this.addToStaticLoot("578f87b7245977356274f2cd", "super762x51", 250);
+        this.addToStaticLoot("578f87b7245977356274f2cd", "super9x39", 250);
+        this.addToStaticLoot("578f87b7245977356274f2cd", "super545x39", 250);
+        this.addToStaticLoot("578f87b7245977356274f2cd", "super556x45NATO", 250);
+        this.addToStaticLoot("578f87b7245977356274f2cd", "super127x55", 250);
+        this.addToStaticLoot("578f87b7245977356274f2cd", "super762x35", 250);
+        this.addToStaticLoot("578f87b7245977356274f2cd", "super9x18PM", 250);
+        this.addToStaticLoot("578f87b7245977356274f2cd", "super366TKM", 250);
+        this.addToStaticLoot("578f87b7245977356274f2cd", "super40x46", 250);
+        this.addToStaticLoot("578f87b7245977356274f2cd", "super26x75", 250);
+        this.addToStaticLoot("578f87b7245977356274f2cd", "super762x54R", 250);
+        this.addToStaticLoot("578f87b7245977356274f2cd", "super86x70", 250);
+        this.addToStaticLoot("578f87b7245977356274f2cd", "super9x19PARA", 250);
+        this.addToStaticLoot("578f87b7245977356274f2cd", "super57x28", 250);
+        this.addToStaticLoot("578f87b7245977356274f2cd", "super9x21", 250);
+        this.addToStaticLoot("578f87b7245977356274f2cd", "super9x33R", 250);
+        this.addToStaticLoot("578f87b7245977356274f2cd", "super23x75", 250);
+        this.addToStaticLoot("578f87b7245977356274f2cd", "super20g", 250);
+        this.addToStaticLoot("578f87b7245977356274f2cd", "super46x30", 250);
+        //Medical SMU06 1 5909d24f86f77466f56e6855
+        //Medical SMU06 2 61aa1ead84ea0800645777fd
+        //Grenade Box 5909d36d86f774660f0bb900
+        //Medcase 5909d4c186f7746ad34e805a    
+        //Toolbox 5909d50c86f774659e6aaebe
+        //Weapon Box 1 5909d5ef86f77467974efbd8
+        this.addToStaticLoot("5909d5ef86f77467974efbd8", "super762x51", 250);
+        this.addToStaticLoot("5909d5ef86f77467974efbd8", "super9x39", 250);
+        this.addToStaticLoot("5909d5ef86f77467974efbd8", "super545x39", 250);
+        this.addToStaticLoot("5909d5ef86f77467974efbd8", "super556x45NATO", 250);
+        this.addToStaticLoot("5909d5ef86f77467974efbd8", "super127x55", 250);
+        this.addToStaticLoot("5909d5ef86f77467974efbd8", "super762x35", 250);
+        this.addToStaticLoot("5909d5ef86f77467974efbd8", "super9x18PM", 250);
+        this.addToStaticLoot("5909d5ef86f77467974efbd8", "super366TKM", 250);
+        this.addToStaticLoot("5909d5ef86f77467974efbd8", "super40x46", 250);
+        this.addToStaticLoot("5909d5ef86f77467974efbd8", "super26x75", 250);
+        this.addToStaticLoot("5909d5ef86f77467974efbd8", "super762x54R", 250);
+        this.addToStaticLoot("5909d5ef86f77467974efbd8", "super86x70", 250);
+        this.addToStaticLoot("5909d5ef86f77467974efbd8", "super9x19PARA", 250);
+        this.addToStaticLoot("5909d5ef86f77467974efbd8", "super57x28", 250);
+        this.addToStaticLoot("5909d5ef86f77467974efbd8", "super9x21", 250);
+        this.addToStaticLoot("5909d5ef86f77467974efbd8", "super9x33R", 250);
+        this.addToStaticLoot("5909d5ef86f77467974efbd8", "super23x75", 250);
+        this.addToStaticLoot("5909d5ef86f77467974efbd8", "super20g", 250);
+        this.addToStaticLoot("5909d5ef86f77467974efbd8", "super46x30", 250);
+        //Weapon Box 2 5909d76c86f77471e53d2adf
+        this.addToStaticLoot("5909d76c86f77471e53d2adf", "super762x51", 250);
+        this.addToStaticLoot("5909d76c86f77471e53d2adf", "super9x39", 250);
+        this.addToStaticLoot("5909d76c86f77471e53d2adf", "super545x39", 250);
+        this.addToStaticLoot("5909d76c86f77471e53d2adf", "super556x45NATO", 250);
+        this.addToStaticLoot("5909d76c86f77471e53d2adf", "super127x55", 250);
+        this.addToStaticLoot("5909d76c86f77471e53d2adf", "super762x35", 250);
+        this.addToStaticLoot("5909d76c86f77471e53d2adf", "super9x18PM", 250);
+        this.addToStaticLoot("5909d76c86f77471e53d2adf", "super366TKM", 250);
+        this.addToStaticLoot("5909d76c86f77471e53d2adf", "super40x46", 250);
+        this.addToStaticLoot("5909d76c86f77471e53d2adf", "super26x75", 250);
+        this.addToStaticLoot("5909d76c86f77471e53d2adf", "super762x54R", 250);
+        this.addToStaticLoot("5909d76c86f77471e53d2adf", "super86x70", 250);
+        this.addToStaticLoot("5909d76c86f77471e53d2adf", "super9x19PARA", 250);
+        this.addToStaticLoot("5909d76c86f77471e53d2adf", "super57x28", 250);
+        this.addToStaticLoot("5909d76c86f77471e53d2adf", "super9x21", 250);
+        this.addToStaticLoot("5909d76c86f77471e53d2adf", "super9x33R", 250);
+        this.addToStaticLoot("5909d76c86f77471e53d2adf", "super23x75", 250);
+        this.addToStaticLoot("5909d76c86f77471e53d2adf", "super20g", 250);
+        this.addToStaticLoot("5909d76c86f77471e53d2adf", "super46x30", 250);
+        //Weapon Box 3 5909d7cf86f77470ee57d75a
+        this.addToStaticLoot("5909d7cf86f77470ee57d75a", "super762x51", 250);
+        this.addToStaticLoot("5909d7cf86f77470ee57d75a", "super9x39", 250);
+        this.addToStaticLoot("5909d7cf86f77470ee57d75a", "super545x39", 250);
+        this.addToStaticLoot("5909d7cf86f77470ee57d75a", "super556x45NATO", 250);
+        this.addToStaticLoot("5909d7cf86f77470ee57d75a", "super127x55", 250);
+        this.addToStaticLoot("5909d7cf86f77470ee57d75a", "super762x35", 250);
+        this.addToStaticLoot("5909d7cf86f77470ee57d75a", "super9x18PM", 250);
+        this.addToStaticLoot("5909d7cf86f77470ee57d75a", "super366TKM", 250);
+        this.addToStaticLoot("5909d7cf86f77470ee57d75a", "super40x46", 250);
+        this.addToStaticLoot("5909d7cf86f77470ee57d75a", "super26x75", 250);
+        this.addToStaticLoot("5909d7cf86f77470ee57d75a", "super762x54R", 250);
+        this.addToStaticLoot("5909d7cf86f77470ee57d75a", "super86x70", 250);
+        this.addToStaticLoot("5909d7cf86f77470ee57d75a", "super9x19PARA", 250);
+        this.addToStaticLoot("5909d7cf86f77470ee57d75a", "super57x28", 250);
+        this.addToStaticLoot("5909d7cf86f77470ee57d75a", "super9x21", 250);
+        this.addToStaticLoot("5909d7cf86f77470ee57d75a", "super9x33R", 250);
+        this.addToStaticLoot("5909d7cf86f77470ee57d75a", "super23x75", 250);
+        this.addToStaticLoot("5909d7cf86f77470ee57d75a", "super20g", 250);
+        this.addToStaticLoot("5909d7cf86f77470ee57d75a", "super46x30", 250);
+        //Weapon Box 4 5909d89086f77472591234a0
+        this.addToStaticLoot("5909d89086f77472591234a0", "super762x51", 250);
+        this.addToStaticLoot("5909d89086f77472591234a0", "super9x39", 250);
+        this.addToStaticLoot("5909d89086f77472591234a0", "super545x39", 250);
+        this.addToStaticLoot("5909d89086f77472591234a0", "super556x45NATO", 250);
+        this.addToStaticLoot("5909d89086f77472591234a0", "super127x55", 250);
+        this.addToStaticLoot("5909d89086f77472591234a0", "super762x35", 250);
+        this.addToStaticLoot("5909d89086f77472591234a0", "super9x18PM", 250);
+        this.addToStaticLoot("5909d89086f77472591234a0", "super366TKM", 250);
+        this.addToStaticLoot("5909d89086f77472591234a0", "super40x46", 250);
+        this.addToStaticLoot("5909d89086f77472591234a0", "super26x75", 250);
+        this.addToStaticLoot("5909d89086f77472591234a0", "super762x54R", 250);
+        this.addToStaticLoot("5909d89086f77472591234a0", "super86x70", 250);
+        this.addToStaticLoot("5909d89086f77472591234a0", "super9x19PARA", 250);
+        this.addToStaticLoot("5909d89086f77472591234a0", "super57x28", 250);
+        this.addToStaticLoot("5909d89086f77472591234a0", "super9x21", 250);
+        this.addToStaticLoot("5909d89086f77472591234a0", "super9x33R", 250);
+        this.addToStaticLoot("5909d89086f77472591234a0", "super23x75", 250);
+        this.addToStaticLoot("5909d89086f77472591234a0", "super20g", 250);
+        this.addToStaticLoot("5909d89086f77472591234a0", "super46x30", 250);
+        //Dead Scav 5909e4b686f7747f5b744fa4
+        this.addToStaticLoot("5909e4b686f7747f5b744fa4", "super762x51", 250);
+        this.addToStaticLoot("5909e4b686f7747f5b744fa4", "super9x39", 250);
+        this.addToStaticLoot("5909e4b686f7747f5b744fa4", "super545x39", 250);
+        this.addToStaticLoot("5909e4b686f7747f5b744fa4", "super556x45NATO", 250);
+        this.addToStaticLoot("5909e4b686f7747f5b744fa4", "super127x55", 250);
+        this.addToStaticLoot("5909e4b686f7747f5b744fa4", "super762x35", 250);
+        this.addToStaticLoot("5909e4b686f7747f5b744fa4", "super9x18PM", 250);
+        this.addToStaticLoot("5909e4b686f7747f5b744fa4", "super366TKM", 250);
+        this.addToStaticLoot("5909e4b686f7747f5b744fa4", "super40x46", 250);
+        this.addToStaticLoot("5909e4b686f7747f5b744fa4", "super26x75", 250);
+        this.addToStaticLoot("5909e4b686f7747f5b744fa4", "super762x54R", 250);
+        this.addToStaticLoot("5909e4b686f7747f5b744fa4", "super86x70", 250);
+        this.addToStaticLoot("5909e4b686f7747f5b744fa4", "super9x19PARA", 250);
+        this.addToStaticLoot("5909e4b686f7747f5b744fa4", "super57x28", 250);
+        this.addToStaticLoot("5909e4b686f7747f5b744fa4", "super9x21", 250);
+        this.addToStaticLoot("5909e4b686f7747f5b744fa4", "super9x33R", 250);
+        this.addToStaticLoot("5909e4b686f7747f5b744fa4", "super23x75", 250);
+        this.addToStaticLoot("5909e4b686f7747f5b744fa4", "super20g", 250);
+        this.addToStaticLoot("5909e4b686f7747f5b744fa4", "super46x30", 250);
+        //PC Block 59139c2186f77411564f8e42
+        //Cash Register TAR2-2 5ad74cf586f774391278f6f0
+        //Plastic Suitcase 5c052cea86f7746b2101e8d8
+        //Common Fund Stash 5d07b91b86f7745a077a9432
+        //Ground Cache 5d6d2b5486f774785c2ba8ea
+        this.addToStaticLoot("5d6d2b5486f774785c2ba8ea", "super762x51", 250);
+        this.addToStaticLoot("5d6d2b5486f774785c2ba8ea", "super9x39", 250);
+        this.addToStaticLoot("5d6d2b5486f774785c2ba8ea", "super545x39", 250);
+        this.addToStaticLoot("5d6d2b5486f774785c2ba8ea", "super556x45NATO", 250);
+        this.addToStaticLoot("5d6d2b5486f774785c2ba8ea", "super127x55", 250);
+        this.addToStaticLoot("5d6d2b5486f774785c2ba8ea", "super762x35", 250);
+        this.addToStaticLoot("5d6d2b5486f774785c2ba8ea", "super9x18PM", 250);
+        this.addToStaticLoot("5d6d2b5486f774785c2ba8ea", "super366TKM", 250);
+        this.addToStaticLoot("5d6d2b5486f774785c2ba8ea", "super40x46", 250);
+        this.addToStaticLoot("5d6d2b5486f774785c2ba8ea", "super26x75", 250);
+        this.addToStaticLoot("5d6d2b5486f774785c2ba8ea", "super762x54R", 250);
+        this.addToStaticLoot("5d6d2b5486f774785c2ba8ea", "super86x70", 250);
+        this.addToStaticLoot("5d6d2b5486f774785c2ba8ea", "super9x19PARA", 250);
+        this.addToStaticLoot("5d6d2b5486f774785c2ba8ea", "super57x28", 250);
+        this.addToStaticLoot("5d6d2b5486f774785c2ba8ea", "super9x21", 250);
+        this.addToStaticLoot("5d6d2b5486f774785c2ba8ea", "super9x33R", 250);
+        this.addToStaticLoot("5d6d2b5486f774785c2ba8ea", "super23x75", 250);
+        this.addToStaticLoot("5d6d2b5486f774785c2ba8ea", "super20g", 250);
+        this.addToStaticLoot("5d6d2b5486f774785c2ba8ea", "super46x30", 250);
+        //Buried Barrel Cache 5d6d2bb386f774785b07a77a
+        this.addToStaticLoot("5d6d2bb386f774785b07a77a", "super762x51", 250);
+        this.addToStaticLoot("5d6d2bb386f774785b07a77a", "super9x39", 250);
+        this.addToStaticLoot("5d6d2bb386f774785b07a77a", "super545x39", 250);
+        this.addToStaticLoot("5d6d2bb386f774785b07a77a", "super556x45NATO", 250);
+        this.addToStaticLoot("5d6d2bb386f774785b07a77a", "super127x55", 250);
+        this.addToStaticLoot("5d6d2bb386f774785b07a77a", "super762x35", 250);
+        this.addToStaticLoot("5d6d2bb386f774785b07a77a", "super9x18PM", 250);
+        this.addToStaticLoot("5d6d2bb386f774785b07a77a", "super366TKM", 250);
+        this.addToStaticLoot("5d6d2bb386f774785b07a77a", "super40x46", 250);
+        this.addToStaticLoot("5d6d2bb386f774785b07a77a", "super26x75", 250);
+        this.addToStaticLoot("5d6d2bb386f774785b07a77a", "super762x54R", 250);
+        this.addToStaticLoot("5d6d2bb386f774785b07a77a", "super86x70", 250);
+        this.addToStaticLoot("5d6d2bb386f774785b07a77a", "super9x19PARA", 250);
+        this.addToStaticLoot("5d6d2bb386f774785b07a77a", "super57x28", 250);
+        this.addToStaticLoot("5d6d2bb386f774785b07a77a", "super9x21", 250);
+        this.addToStaticLoot("5d6d2bb386f774785b07a77a", "super9x33R", 250);
+        this.addToStaticLoot("5d6d2bb386f774785b07a77a", "super23x75", 250);
+        this.addToStaticLoot("5d6d2bb386f774785b07a77a", "super20g", 250);
+        this.addToStaticLoot("5d6d2bb386f774785b07a77a", "super46x30", 250);
+        //Ration Supply Crate 5d6fd13186f77424ad2a8c69
+        //Technical Supply Crate 5d6fd45b86f774317075ed43
+        //Medical Supply Crate 5d6fe50986f77449d97f7463
+        //Duffle Bag 1 578f87a3245977356274f2cb
+        this.addToStaticLoot("578f87a3245977356274f2cb", "super762x51", 250);
+        this.addToStaticLoot("578f87a3245977356274f2cb", "super9x39", 250);
+        this.addToStaticLoot("578f87a3245977356274f2cb", "super545x39", 250);
+        this.addToStaticLoot("578f87a3245977356274f2cb", "super556x45NATO", 250);
+        this.addToStaticLoot("578f87a3245977356274f2cb", "super127x55", 250);
+        this.addToStaticLoot("578f87a3245977356274f2cb", "super762x35", 250);
+        this.addToStaticLoot("578f87a3245977356274f2cb", "super9x18PM", 250);
+        this.addToStaticLoot("578f87a3245977356274f2cb", "super366TKM", 250);
+        this.addToStaticLoot("578f87a3245977356274f2cb", "super40x46", 250);
+        this.addToStaticLoot("578f87a3245977356274f2cb", "super26x75", 250);
+        this.addToStaticLoot("578f87a3245977356274f2cb", "super762x54R", 250);
+        this.addToStaticLoot("578f87a3245977356274f2cb", "super86x70", 250);
+        this.addToStaticLoot("578f87a3245977356274f2cb", "super9x19PARA", 250);
+        this.addToStaticLoot("578f87a3245977356274f2cb", "super57x28", 250);
+        this.addToStaticLoot("578f87a3245977356274f2cb", "super9x21", 250);
+        this.addToStaticLoot("578f87a3245977356274f2cb", "super9x33R", 250);
+        this.addToStaticLoot("578f87a3245977356274f2cb", "super23x75", 250);
+        this.addToStaticLoot("578f87a3245977356274f2cb", "super20g", 250);
+        this.addToStaticLoot("578f87a3245977356274f2cb", "super46x30", 250);
+        //Duffle Bag 2 61aa1e9a32a4743c3453d2cf
+        this.addToStaticLoot("61aa1e9a32a4743c3453d2cf", "super762x51", 250);
+        this.addToStaticLoot("61aa1e9a32a4743c3453d2cf", "super9x39", 250);
+        this.addToStaticLoot("61aa1e9a32a4743c3453d2cf", "super545x39", 250);
+        this.addToStaticLoot("61aa1e9a32a4743c3453d2cf", "super556x45NATO", 250);
+        this.addToStaticLoot("61aa1e9a32a4743c3453d2cf", "super127x55", 250);
+        this.addToStaticLoot("61aa1e9a32a4743c3453d2cf", "super762x35", 250);
+        this.addToStaticLoot("61aa1e9a32a4743c3453d2cf", "super9x18PM", 250);
+        this.addToStaticLoot("61aa1e9a32a4743c3453d2cf", "super366TKM", 250);
+        this.addToStaticLoot("61aa1e9a32a4743c3453d2cf", "super40x46", 250);
+        this.addToStaticLoot("61aa1e9a32a4743c3453d2cf", "super26x75", 250);
+        this.addToStaticLoot("61aa1e9a32a4743c3453d2cf", "super762x54R", 250);
+        this.addToStaticLoot("61aa1e9a32a4743c3453d2cf", "super86x70", 250);
+        this.addToStaticLoot("61aa1e9a32a4743c3453d2cf", "super9x19PARA", 250);
+        this.addToStaticLoot("61aa1e9a32a4743c3453d2cf", "super57x28", 250);
+        this.addToStaticLoot("61aa1e9a32a4743c3453d2cf", "super9x21", 250);
+        this.addToStaticLoot("61aa1e9a32a4743c3453d2cf", "super9x33R", 250);
+        this.addToStaticLoot("61aa1e9a32a4743c3453d2cf", "super23x75", 250);
+        this.addToStaticLoot("61aa1e9a32a4743c3453d2cf", "super20g", 250);
+        this.addToStaticLoot("61aa1e9a32a4743c3453d2cf", "super46x30", 250);
         //this.showWeaponMod()
     }
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -268,12 +566,13 @@ class SuperAmmo {
                 "Description": description
             };
     }
-    addToRevolverShotty(itemId, ammoToAdd) {
+    addToRevolvingWeopons(itemId, ammoToAdd) {
         const logger = tsyringe_1.container.resolve("WinstonLogger");
         const db = tsyringe_1.container.resolve("DatabaseServer").getTables();
         const weaponID = db.templates.items[itemId];
         for (const index in weaponID._props.Slots) {
-            logger.log("Adding " + ammoToAdd + " to " + weaponID._name, "cyan");
+            if (debug)
+                logger.logWithColor("Adding " + ammoToAdd + " to " + weaponID._name, LogTextColor_1.LogTextColor.CYAN);
             const z_Filter = weaponID._props.Slots[index]._props.filters[0].Filter;
             z_Filter.push.apply(z_Filter, [ammoToAdd]);
             const newFilters = [
@@ -285,7 +584,8 @@ class SuperAmmo {
             weaponID._props.Slots[index]._props.filters = newFilters;
         }
         for (const index in weaponID._props.Cartridges) {
-            logger.log("Adding " + ammoToAdd + " to " + weaponID._name, "cyan");
+            if (debug)
+                logger.logWithColor("Adding " + ammoToAdd + " to " + weaponID._name, LogTextColor_1.LogTextColor.CYAN);
             const z_Filter = weaponID._props.Cartridges[index]._props.filters[0].Filter;
             z_Filter.push.apply(z_Filter, [ammoToAdd]);
             const newFilters = [
@@ -354,8 +654,10 @@ class SuperAmmo {
                         ExcludedFilter: []
                     }
                 ];
-                logger.logWithColor(magazineID._name, LogTextColor_1.LogTextColor.green);
-                logger.logWithColor(ammoToAdd, LogTextColor_1.LogTextColor.yellow);
+                if (debug)
+                    logger.logWithColor(magazineID._name, LogTextColor_1.LogTextColor.GREEN);
+                if (debug)
+                    logger.logWithColor(ammoToAdd, LogTextColor_1.LogTextColor.YELLOW);
                 magazineID._props.Cartridges[0]._props.filters = newFilters;
             }
         }
@@ -415,8 +717,10 @@ class SuperAmmo {
                 }
             }
         }
-        logger.logWithColor("Weapon Slot Names", LogTextColor_1.LogTextColor.cyan);
-        logger.logWithColor(newArray, LogTextColor_1.LogTextColor.red);
+        if (debug)
+            logger.logWithColor("Weapon Slot Names", LogTextColor_1.LogTextColor.CYAN);
+        if (debug)
+            logger.logWithColor(newArray, LogTextColor_1.LogTextColor.RED);
     }
     showCaliber() {
         const db = tsyringe_1.container.resolve("DatabaseServer").getTables();
@@ -435,9 +739,9 @@ class SuperAmmo {
             }
         }
         if (debug)
-            logger.logWithColor("Ammo Calibers", LogTextColor_1.LogTextColor.green);
+            logger.logWithColor("Ammo Calibers", LogTextColor_1.LogTextColor.GREEN);
         if (debug)
-            logger.logWithColor(testArray, LogTextColor_1.LogTextColor.red);
+            logger.logWithColor(testArray, LogTextColor_1.LogTextColor.RED);
     }
     addToStaticLoot(containerID, itemToAdd, probablity) {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -478,7 +782,8 @@ class SuperAmmo {
         ammoID._props.BackgroundColor = this.modConfig.BackgroundColor;
         ammoID._props.Finallowed = false;
         ammoID._props.FinAllowed = false;
-        logger.logWithColor("Ammo " + ammoID._id + " Added", LogTextColor_1.LogTextColor.green);
+        if (debug)
+            logger.logWithColor("Ammo " + ammoID._id + " Added", LogTextColor_1.LogTextColor.GREEN);
     }
     cloneBoomAmmo(ammoToClone, newAmmoID) {
         const db = tsyringe_1.container.resolve("DatabaseServer").getTables();
@@ -505,13 +810,14 @@ class SuperAmmo {
         ammoID._props.ShowHitEffectOnExplode = true;
         ammoID._props.FragmentsCount = this.modConfig.fragmentCount;
         ammoID._props.FragmentType = "myshrap";
-        ammoID._props.ExplosionType = "big_round_impact_explosive";
+        ammoID._props.ExplosionType = "smallgrenade_expl";
         ammoID._props.MinExplosionDistance = this.modConfig.MinExplosionDistance;
         ammoID._props.MaxExplosionDistance = this.modConfig.MaxExplosionDistance;
         ammoID._props.BackgroundColor = "tracerRed";
         ammoID._props.Finallowed = false;
         ammoID._props.FinAllowed = false;
-        logger.logWithColor("BoomAmmo " + ammoID._id + " Added", LogTextColor_1.LogTextColor.green);
+        if (debug)
+            logger.logWithColor("BoomAmmo " + ammoID._id + " Added", LogTextColor_1.LogTextColor.GREEN);
     }
     cloneItem(itemtoClone, newitemID) {
         const JsonUtil = tsyringe_1.container.resolve("JsonUtil");
@@ -521,7 +827,7 @@ class SuperAmmo {
         db.templates.items[itemToAdd] = JsonUtil.clone(db.templates.items[itemtoClone]);
         db.templates.items[itemToAdd]._id = itemToAdd;
         if (debug)
-            logger.logWithColor(db.templates.items[itemtoClone]._name + " cloned", LogTextColor_1.LogTextColor.green);
+            logger.logWithColor(db.templates.items[itemtoClone]._name + " cloned", LogTextColor_1.LogTextColor.GREEN);
     }
     registerProfileImage(container) {
         const preAkiModLoader = container.resolve("PreAkiModLoader");
